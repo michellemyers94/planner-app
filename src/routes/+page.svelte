@@ -1,6 +1,8 @@
 <script>
     import Todos from "../components/Todos.svelte";
     import './styles.css';
+    import "sweetalert2/dist/sweetalert2.min.css";
+    import Categories from "../components/Categories.svelte";
 
     let todos = [
         { id: 1, name: "Complete Assignment 1", completed: true },
@@ -17,6 +19,7 @@
 
         <h1 class="app-title">Planner App</h1>
         <h3 class="categories-title">categories</h3>
+        <Categories />
 
 
         <div class="category-buttons">

@@ -1,6 +1,9 @@
 
 
 <script>
+    import Swal from "sweetalert2";
+
+
 export let todos = [];
 $: totalTodos = todos.length;
 $: completedTodos = todos.filter((todo) =>
@@ -71,9 +74,23 @@ const filterTodos = (filter, todos) =>
             <div class="edit-delete-item-group">
                 <button type="button" class="edit-task">edit</button>
                 <button type="button" class="delete-task"
-                        on:click={() => removeTodo(todo)}
-                >
-                    delete <span class="visually-hidden"></span>
+                        on:click={() => {
+                                Swal.fire({
+                                  title: 'Are you sure you want to delete this task?',
+                                  text: 'There\'s no going back!',
+                                  icon: 'warning',
+                                  showCancelButton: true,
+                                  confirmButtonText: 'Yes, delete it!',
+                                  cancelButtonText: 'No, keep it'
+                                }).then(result => {
+                                  if (removeTodo(todo)) {
+                                    Swal.fire('Deleted!', 'Your imaginary file has been deleted.', 'success');
+                                  } else if (result.dismiss === Swal.DismissReason.cancel) {
+                                    Swal.fire('Cancelled', 'Your imaginary file is safe :)', 'error');
+                                  }
+                                });
+                              }}>
+                    delete
                 </button>
 
             </div>
