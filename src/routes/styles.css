@@ -5,7 +5,7 @@
 /*END RESETS*/
 
 body {
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
 
 }
 .grid-container {
@@ -110,7 +110,7 @@ tr {
 
 li.todo {
     width: 60vw;
-    border: 1px solid #7A7373;
+    border: 1px solid rgba(122, 115, 115, .3);
     border-radius: 2px;
     padding: 0px 5px 6px 20px;
 }
